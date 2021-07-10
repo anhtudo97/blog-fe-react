@@ -1,0 +1,17 @@
+{
+    "import/no-anonymous-default-export": [
+        "error",
+        {
+            "allowArray": false,
+            "allowArrowFunction": false,
+            "allowAnonymousClass": false,
+            "allowAnonymousFunction": false,
+            "allowCallExpression": true,
+            "allowLiteral": false,
+            "allowObject": false
+        }
+    ],
+    "react/prop-types": 0,
+    "react/no-unescaped-entities": 0,
+    "no-self-assign": 0
+}
