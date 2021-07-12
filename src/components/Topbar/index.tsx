@@ -24,7 +24,7 @@ const stateUserSelector = createSelector(makeSelectUser, (user) => ({
   user,
 }));
 
-export function Topbar() {
+export const Topbar = () => {
   const { user } = useSelector(stateUserSelector);
   const PF = 'http://localhost:5000/images/';
 
@@ -94,4 +94,4 @@ export function Topbar() {
       </TopSide>
     </Top>
   );
-}
+};
