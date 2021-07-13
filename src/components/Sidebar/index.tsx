@@ -16,7 +16,7 @@ import { ICategory } from '../../types/post';
 
 import { Link } from 'react-router-dom';
 
-export default function Sidebar() {
+export const Sidebar = () => {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ export default function Sidebar() {
       </SidebarItem>
     </SidebarContainer>
   );
-}
+};

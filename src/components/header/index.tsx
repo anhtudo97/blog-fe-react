@@ -7,7 +7,7 @@ import {
   HeaderImg,
 } from './styled';
 
-export default function Header() {
+export const Header = () => {
   return (
     <HeaderContainer>
       <HeaderTitle>
@@ -20,4 +20,4 @@ export default function Header() {
       />
     </HeaderContainer>
   );
-}
+};
