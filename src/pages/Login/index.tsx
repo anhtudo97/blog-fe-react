@@ -39,14 +39,12 @@ export const Login = () => {
         <label>Username</label>
         <LoginInput
           type="text"
-          className="loginInput"
           placeholder="Enter your username..."
           ref={userRef}
         />
         <label>Password</label>
         <LoginInput
           type="password"
-          className="loginInput"
           placeholder="Enter your password..."
           ref={passwordRef}
         />

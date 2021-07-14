@@ -16,21 +16,15 @@ import {
 import axios from 'axios';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { createSelector } from '@reduxjs/toolkit';
-import { userSelector } from '../../app/selectors';
 import { IPost } from '../../types/post';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../app/hooks';
 
-const stateUserSelector = createSelector(userSelector, (user) => ({
-  user,
-}));
-
-export default function SinglePost() {
+export const SinglePost = () => {
   const location = useLocation();
   const path = location.pathname.split('/')[2];
   const [post, setPost] = useState<IPost | Record<string, number>>({});
   const PF = 'http://localhost:5000/images/';
-  const { user } = useSelector(stateUserSelector);
+  const user = useAppSelector((state) => state.root.user);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [updateMode, setUpdateMode] = useState(false);
@@ -122,4 +116,4 @@ export default function SinglePost() {
       </SinglePostWrapper>
     </SinglePostContainer>
   );
-}
+};
