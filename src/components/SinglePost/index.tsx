@@ -17,11 +17,11 @@ import axios from 'axios';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { createSelector } from '@reduxjs/toolkit';
-import { makeSelectUser } from '../../app/selectors';
+import { userSelector } from '../../app/selectors';
 import { IPost } from '../../types/post';
 import { useSelector } from 'react-redux';
 
-const stateUserSelector = createSelector(makeSelectUser, (user) => ({
+const stateUserSelector = createSelector(userSelector, (user) => ({
   user,
 }));
 

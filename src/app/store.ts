@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import rootReducer from './slice';
 
 export const store = configureStore({

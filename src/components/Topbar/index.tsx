@@ -12,26 +12,17 @@ import {
   TopList,
   TopSearchIcon,
 } from './styled';
-import { makeSelectUser } from '../../app/selectors';
 import { logout } from '../../app/slice';
-import { useDispatch, useSelector } from 'react-redux';
-
-const logoutAction = (dispatch: Dispatch) => ({
-  logout: () => dispatch(logout()),
-});
-
-const stateUserSelector = createSelector(makeSelectUser, (user) => ({
-  user,
-}));
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 export const Topbar = () => {
-  const { user } = useSelector(stateUserSelector);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.root.user);
+
   const PF = 'http://localhost:5000/images/';
 
-  const { logout } = logoutAction(useDispatch());
-
   const handleLogout = useCallback(() => {
-    logout();
+    dispatch(logout());
   }, []);
 
   return (
