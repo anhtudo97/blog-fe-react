@@ -76,8 +76,8 @@ export default function Settings() {
       updatedUser.profilePic = filename;
       try {
         await axios.post('/upload', data);
-      } catch (err: any) {
-        throw new Error(err);
+      } catch (err) {
+        throw new Error('Upload failure');
       }
     }
     try {
