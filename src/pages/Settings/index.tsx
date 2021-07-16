@@ -25,7 +25,7 @@ interface UpdateUser {
   profilePic: string;
 }
 
-export default function Settings() {
+export const Settings = () => {
   const [file, setFile] = useState<File>();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -135,4 +135,4 @@ export default function Settings() {
       <Sidebar />
     </SettingsContainer>
   );
-}
+};

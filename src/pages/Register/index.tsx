@@ -11,7 +11,7 @@ import {
   ErrorMessage,
 } from './styled';
 
-export default function Register() {
+export const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -64,4 +64,4 @@ export default function Register() {
       {error && <ErrorMessage>Something went wrong!</ErrorMessage>}
     </RegisterContainer>
   );
-}
+};

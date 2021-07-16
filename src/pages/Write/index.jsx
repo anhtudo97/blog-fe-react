@@ -13,7 +13,7 @@ import {
 } from './styled';
 import { useAppSelector } from '../../app/hooks';
 
-export default function Write() {
+export const Write = () => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [file, setFile] = useState(null);
@@ -79,4 +79,4 @@ export default function Write() {
       </WriteForm>
     </WriteContainer>
   );
-}
+};
