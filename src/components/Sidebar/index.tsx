@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
   SidebarIcon,
@@ -15,13 +14,14 @@ import {
 import { ICategory } from '../../types/post';
 
 import { Link } from 'react-router-dom';
+import { api } from '../../api';
 
 export const Sidebar = () => {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get('/categories');
+      const res = await api.get('/categories');
       setCats(res.data);
     };
     getCats();

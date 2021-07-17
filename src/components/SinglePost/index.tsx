@@ -12,12 +12,11 @@ import {
   SinglePostDescInput,
   SinglePostButton,
 } from './styled';
-
-import axios from 'axios';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { IPost } from '../../types/post';
 import { useAppSelector } from '../../app/hooks';
+import { api } from '../../api';
 
 export const SinglePost = () => {
   const location = useLocation();
@@ -31,7 +30,7 @@ export const SinglePost = () => {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get('/posts/' + path);
+      const res = await api.get('/posts/' + path);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -41,7 +40,7 @@ export const SinglePost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`, {
+      await api.delete(`/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace('/');
@@ -52,7 +51,7 @@ export const SinglePost = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await api.put(`/posts/${post._id}`, {
         username: user.username,
         title,
         desc,

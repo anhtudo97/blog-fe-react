@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { loginSuccess, loginFailure, loginStart } from '../../app/slice';
@@ -11,6 +10,7 @@ import {
   LoginRegisterButton,
 } from './styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { api } from '../../api';
 
 export const Login = () => {
   const userRef = useRef<HTMLInputElement | null>(null);
@@ -22,7 +22,7 @@ export const Login = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post('/auth/login', {
+      const res = await api.post('/auth/login', {
         username: userRef.current?.value,
         password: passwordRef.current?.value,
       });

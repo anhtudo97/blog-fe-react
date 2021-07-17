@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 
-import axios from 'axios';
 import { Sidebar } from '../../components/Sidebar';
 import { useState } from 'react';
 import {
@@ -16,6 +15,7 @@ import {
 } from './styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { updateFailure, updateStart, updateSuccess } from '../../app/slice';
+import { api } from '../../api';
 
 interface UpdateUser {
   userId: string;
@@ -75,13 +75,13 @@ export const Settings = () => {
       data.append('file', file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post('/upload', data);
+        await api.post('/upload', data);
       } catch (err) {
         throw new Error('Upload failure');
       }
     }
     try {
-      const res = await axios.put('/users/' + user._id, updatedUser);
+      const res = await api.put('/users/' + user._id, updatedUser);
       setSuccess(true);
       dispatch(updateSuccess(res.data));
     } catch (err) {

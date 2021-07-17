@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import './styled.ts';
-import axios from 'axios';
 import {
   WriteContainer,
   WriteImg,
@@ -12,6 +10,7 @@ import {
   WriteSubmit,
 } from './styled';
 import { useAppSelector } from '../../app/hooks';
+import { api } from '../../api';
 
 export const Write = () => {
   const [title, setTitle] = useState('');
@@ -33,13 +32,13 @@ export const Write = () => {
       data.append('file', file);
       newPost.photo = filename;
       try {
-        await axios.post('/upload', data);
+        await api.post('/upload', data);
       } catch (err) {
         throw new Error(err);
       }
     }
     try {
-      const res = await axios.post('/posts', newPost);
+      const res = await api.post('/posts', newPost);
       window.location.replace('/post/' + res.data._id);
     } catch (err) {
       throw new Error(err);
