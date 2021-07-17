@@ -49,7 +49,7 @@ export const Topbar = () => {
             </Link>
           </TopListItem>
           <TopListItem>
-            <Link className="link" to="/">
+            <Link className="link" to="/write">
               WRITE
             </Link>
           </TopListItem>
