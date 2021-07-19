@@ -1,70 +1,44 @@
 import styled from 'styled-components';
-const LoginContainer = styled.div`
-  height: calc(100vh - 50px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url('https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
-  background-size: cover;
-`;
+import tw from 'twin.macro';
 
-const LoginTitle = styled.span`
-  font-size: 50px;
+const LoginContainer = styled.div`
+  height: calc(100vh - 60px);
+  background-size: cover;
+  ${tw`flex justify-center px-4 pt-40 bg-gray-100 sm:px-6 lg:px-8`}
 `;
 
 const LoginForm = styled.form`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-
-  & > label {
-    margin: 10px 0;
-  }
+  ${tw`my-8 space-y-6`}
 `;
 
-const LoginInput = styled.input`
-  padding: 10px;
-  background-color: white;
-  border: none;
+const LoginFormWrapper = styled.div`
+  ${tw`rounded-md shadow-sm `}
 `;
 
-const LoginButton = styled.button`
-  margin-top: 20px;
-  cursor: pointer;
-  background-color: lightcoral;
-  border: none;
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: rgb(252, 173, 173);
-  }
+const LoginInputUsername = styled.input`
+  ${tw`relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
 `;
 
-const LoginRegisterButton = styled.button`
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: teal;
-  cursor: pointer;
-  border: none;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
+const LoginInputPassword = styled.input`
+  ${tw`relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
+`;
+
+const LoginOptionWrapper = styled.div`
+  ${tw`flex items-center justify-between`}
+`;
+
+const LoginWrapper = styled.div`
+  height: fit-content;
+  box-shadow: 0px 0px 4px 0px #ffffff;
+  ${tw`max-w-md p-6 space-y-8 bg-white border-gray-300 rounded-md`}
 `;
 
 export {
   LoginContainer,
-  LoginTitle,
+  LoginWrapper,
   LoginForm,
-  LoginInput,
-  LoginButton,
-  LoginRegisterButton,
+  LoginInputUsername,
+  LoginInputPassword,
+  LoginOptionWrapper,
+  LoginFormWrapper,
 };
