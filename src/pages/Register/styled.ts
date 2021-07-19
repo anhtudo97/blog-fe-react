@@ -1,72 +1,39 @@
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const RegisterContainer = styled.div`
-  height: calc(100vh - 50px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  height: calc(100vh - 60px);
   background-size: cover;
-`;
-
-const RegisterTitle = styled.span`
-  font-size: 50px;
+  ${tw`flex justify-center px-4 pt-40 bg-gray-100 sm:px-6 lg:px-8`}
 `;
 
 const RegisterForm = styled.form`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+  ${tw`my-8 space-y-6`}
+`;
 
-  & > label {
-    margin: 10px 0;
-  }
+const RegisterFormWrapper = styled.div`
+  ${tw`rounded-md shadow-sm `}
 `;
 
 const RegisterInput = styled.input`
-  padding: 10px;
-  background-color: white;
-  border: none;
+  ${tw`relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
 `;
 
-const RegisterButton = styled.button`
-  margin-top: 20px;
-  cursor: pointer;
-  background-color: teal;
-  border: none;
-  color: white;
-  border-radius: 10px;
-  padding: 10px;
+const RegisterOptionWrapper = styled.div`
+  ${tw`flex items-center justify-center`}
 `;
 
-const RegisterLoginButton = styled.button`
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: lightcoral;
-  cursor: pointer;
-  border: none;
-  padding: 10px;
-  color: white;
-  border-radius: 10px;
-`;
-
-const ErrorMessage = styled.span`
-  color: red;
-  margin-top: 10px;
+const RegisterWrapper = styled.div`
+  height: fit-content;
+  box-shadow: 0px 0px 4px 0px #ffffff;
+  ${tw`max-w-md p-6 space-y-8 bg-white border-gray-300 rounded-md`}
 `;
 
 export {
   RegisterContainer,
-  RegisterTitle,
+  RegisterWrapper,
   RegisterForm,
   RegisterInput,
-  RegisterButton,
-  RegisterLoginButton,
-  ErrorMessage,
+  RegisterOptionWrapper,
+  RegisterFormWrapper,
 };
