@@ -15,6 +15,8 @@ import { ICategory } from '../../types/post';
 
 import { Link } from 'react-router-dom';
 import { api } from '../../api';
+import { AboutMeCard } from '../Card/AboutMeCard';
+import { PopularCard } from '../Card/PopularCard';
 
 export const Sidebar = () => {
   const [cats, setCats] = useState([]);
@@ -27,37 +29,14 @@ export const Sidebar = () => {
     getCats();
   }, []);
   return (
-    <SidebarContainer>
-      <SidebarItem>
-        <SidebarTitle>ABOUT ME</SidebarTitle>
-        <Image
-          src="https://i.pinimg.com/236x/1e/3f/58/1e3f587572a7a7b20bbf1828595a1786--holiday-party-themes-holiday-gift-guide.jpg"
-          alt=""
-        />
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate qui
-          necessitatibus nostrum illum reprehenderit.
-        </Paragraph>
-      </SidebarItem>
-      <SidebarItem>
-        <SidebarTitle>CATEGORIES</SidebarTitle>
-        <SidebarList>
-          {cats.map((c: ICategory, index: number) => (
-            <Link key={`${c}-${index}`} to={`/?cat=${c.name}`} className="link">
-              <SidebarListItem>{c.name}</SidebarListItem>
-            </Link>
-          ))}
-        </SidebarList>
-      </SidebarItem>
-      <SidebarItem>
-        <SidebarTitle>FOLLOW US</SidebarTitle>
-        <SidebarSocial>
-          <SidebarIcon className="fab fa-facebook-square"></SidebarIcon>
-          <SidebarIcon className="fab fa-twitter-square"></SidebarIcon>
-          <SidebarIcon className="fab fa-pinterest-square"></SidebarIcon>
-          <SidebarIcon className="fab fa-instagram-square"></SidebarIcon>
-        </SidebarSocial>
-      </SidebarItem>
-    </SidebarContainer>
+    <>
+      <AboutMeCard />
+      <div className="mt-16">
+        <div className="text-xl font-bold text-gray-900">Popular posts</div>
+        <PopularCard />
+        <PopularCard />
+        <PopularCard />
+      </div>
+    </>
   );
 };
