@@ -11,9 +11,10 @@ import {
   RegisterFormWrapper,
   RegisterWrapper,
 } from './styled';
+import { useToasts } from 'react-toast-notifications';
 
 export const Register = () => {
-  const [error, setError] = useState(false);
+  const { addToast } = useToasts();
 
   const emailRef = useRef<HTMLInputElement | null>(null);
   const userRef = useRef<HTMLInputElement | null>(null);
@@ -23,7 +24,6 @@ export const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(false);
     try {
       const res = await api.post('/auth/register', {
         username: userRef.current?.value,
@@ -31,8 +31,8 @@ export const Register = () => {
         password: passwordRef.current?.value,
       });
       res.data && window.location.replace('/login');
-    } catch (err) {
-      setError(true);
+    } catch (err: any) {
+      addToast(err.message, { appearance: 'error' });
     }
   };
 

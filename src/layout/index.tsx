@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Header } from 'src/components/Header';
 
 const containerVariants = {
   hidden: {
@@ -24,7 +23,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       animate="visible"
       exit="exit"
     >
-      <Header />
       <main>{children}</main>
     </motion.div>
   );

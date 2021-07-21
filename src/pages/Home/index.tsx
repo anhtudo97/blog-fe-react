@@ -8,8 +8,6 @@ import Layout from '../../layout';
 import { VerticalCard } from 'src/components/Card/VerticalCard';
 import { HorizontalCard } from 'src/components/Card/HorizontalCard';
 import { MainContentCard } from 'src/components/Card/MainContentCard';
-import { AboutMeCard } from 'src/components/Card/AboutMeCard';
-import { PopularCard } from 'src/components/Card/PopularCard';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -43,20 +41,10 @@ export const Home = () => {
             <MainContentCard />
           </div>
           <div className="col-start-8 col-end-10">
-            <AboutMeCard />
-
-            <div className="mt-16">
-              <div className="text-xl font-bold text-gray-900">
-                Popular posts
-              </div>
-              <PopularCard />
-              <PopularCard />
-              <PopularCard />
-            </div>
+            <Sidebar />
           </div>
         </div>
         <Posts posts={posts} />
-        {/* <Sidebar /> */}
       </HomeContainer>
     </Layout>
   );
