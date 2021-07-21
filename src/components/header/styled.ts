@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
-  margin-top: 60px;
 `;
 
 const HeaderTitle = styled.div`
@@ -27,7 +26,6 @@ const HeaderTitleLg = styled.span`
 const HeaderImg = styled.img`
   width: 100%;
   height: 450px;
-  margin-top: 80px;
   object-fit: cover;
 `;
 
