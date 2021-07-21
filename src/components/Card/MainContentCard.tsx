@@ -1,25 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
+
+const ImageContainer = styled.div`
+  ${tw`rounded-md`}
+  height: 440px;
+  background-image: url(${(props: { background: string }) => props.background});
+`;
+
+const ContentWrapper = styled.div`
+  ${tw`mx-4 rounded-md p-7`}
+  margin-top: -125px;
+  height: '250px';
+  background-color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+`;
 
 export const MainContentCard = () => {
   return (
     <div className="mb-14">
-      <div
-        className="rounded-md"
-        style={{
-          height: '440px',
-          backgroundImage:
-            'url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png)',
-        }}
-      ></div>
-      <div
-        className="mx-4 rounded-md p-7"
-        style={{
-          marginTop: '-125px',
-          height: '250px',
-          backgroundColor: 'white',
-          boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.1)',
-        }}
-      >
+      <ImageContainer background="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
+
+      <ContentWrapper>
         <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded-md bg-bluebird">
           Vehicle
         </div>
@@ -35,7 +37,7 @@ export const MainContentCard = () => {
           omnis iste natus error sit voluptatem accusantium doloremque
           laudantium, totam rem
         </div>
-      </div>
+      </ContentWrapper>
     </div>
   );
 };
