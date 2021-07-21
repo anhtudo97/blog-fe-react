@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const ImageContainer = styled.div`
-  ${tw`rounded-md`}
+  ${tw`bg-cover rounded-md`}
   height: 440px;
   background-image: url(${(props: { background: string }) => props.background});
 `;
