@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '../../components/Header';
 import { Posts } from '../../components/Posts';
 import { Sidebar } from '../../components/Sidebar';
 import { HomeContainer } from './styled';
 import { useLocation } from 'react-router';
 import { api } from '../../api';
-import { InitialTransition } from '../../components/InitialTransition';
-import { motion } from 'framer-motion';
+import Layout from '../../layout';
+import { VerticalCard } from 'src/components/Card/VerticalCard';
+import { HorizontalCard } from 'src/components/Card/HorizontalCard';
+import { MainContentCard } from 'src/components/Card/MainContentCard';
+import { AboutMeCard } from 'src/components/Card/AboutMeCard';
+import { PopularCard } from 'src/components/Card/PopularCard';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -19,14 +22,42 @@ export const Home = () => {
     };
     fetchPosts();
   }, [search]);
+
   return (
-    <motion.section exit={{ opacity: 0 }}>
-      <InitialTransition />
-      <Header />
+    <Layout>
       <HomeContainer>
+        <div className="grid gap-8 grid-colfs-3">
+          <VerticalCard />
+          <div className="grid grid-cols-2 col-start-2 col-end-5 gap-8">
+            <HorizontalCard />
+            <HorizontalCard />
+            <HorizontalCard />
+            <HorizontalCard />
+          </div>
+        </div>
+        <div className="grid grid-cols-9 mt-20">
+          <div className="col-start-1 col-end-7">
+            <MainContentCard />
+            <MainContentCard />
+            <MainContentCard />
+            <MainContentCard />
+          </div>
+          <div className="col-start-8 col-end-10">
+            <AboutMeCard />
+
+            <div className="mt-16">
+              <div className="text-xl font-bold text-gray-900">
+                Popular posts
+              </div>
+              <PopularCard />
+              <PopularCard />
+              <PopularCard />
+            </div>
+          </div>
+        </div>
         <Posts posts={posts} />
-        <Sidebar />
+        {/* <Sidebar /> */}
       </HomeContainer>
-    </motion.section>
+    </Layout>
   );
 };
