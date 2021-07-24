@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../api';
 import { useAppSelector } from '../../app/hooks';
@@ -11,11 +11,8 @@ import {
   RegisterFormWrapper,
   RegisterWrapper,
 } from './styled';
-import { useToasts } from 'react-toast-notifications';
 
 export const Register = () => {
-  const { addToast } = useToasts();
-
   const emailRef = useRef<HTMLInputElement | null>(null);
   const userRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
@@ -32,7 +29,7 @@ export const Register = () => {
       });
       res.data && window.location.replace('/login');
     } catch (err: any) {
-      addToast(err.message, { appearance: 'error' });
+      console.log(err);
     }
   };
 
@@ -121,7 +118,7 @@ export const Register = () => {
             <button
               disabled={isFetching || dontRegister}
               type="submit"
-              className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               {dontRegister && (
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
