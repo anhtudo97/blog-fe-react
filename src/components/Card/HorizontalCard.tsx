@@ -9,7 +9,7 @@ interface HorizontalCardProps {
 }
 
 const Container = styled.div`
-  ${tw`flex flex-col justify-between w-full p-4 bg-black bg-cover rounded-md`}
+  ${tw`flex flex-col justify-between w-full p-4 bg-black bg-cover rounded`}
   height: 265px;
   background-image: url(${(props: { background: string }) => props.background});
 `;
@@ -17,7 +17,7 @@ const Container = styled.div`
 export const HorizontalCard = () => {
   return (
     <Container background="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png">
-      <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded-md bg-bluebird">
+      <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded bg-bluebird">
         Vehicle
       </div>
       <div>

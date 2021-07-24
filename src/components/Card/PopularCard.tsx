@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const ImageContainer = styled.div`
-  ${tw`w-full p-5 bg-cover rounded-md`}
+  ${tw`w-full p-5 bg-cover rounded`}
   height: 195px;
   background-image: url(${(props: { background: string }) => props.background});
 `;
@@ -12,7 +12,7 @@ export const PopularCard = () => {
   return (
     <div className="mt-6">
       <ImageContainer background="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png">
-        <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded-md bg-bluebird">
+        <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded bg-bluebird">
           Vehicle
         </div>
       </ImageContainer>

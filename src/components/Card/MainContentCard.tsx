@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const ImageContainer = styled.div`
-  ${tw`bg-cover rounded-md`}
+  ${tw`bg-cover rounded`}
   height: 440px;
   background-image: url(${(props: { background: string }) => props.background});
 `;
 
 const ContentWrapper = styled.div`
-  ${tw`mx-4 rounded-md p-7`}
+  ${tw`mx-4 rounded p-7`}
   margin-top: -125px;
   height: '250px';
   background-color: white;
@@ -22,7 +22,7 @@ export const MainContentCard = () => {
       <ImageContainer background="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
 
       <ContentWrapper>
-        <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded-md bg-bluebird">
+        <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded bg-bluebird">
           Vehicle
         </div>
         <div className="mt-5 text-2xl font-bold text-gray-900">
