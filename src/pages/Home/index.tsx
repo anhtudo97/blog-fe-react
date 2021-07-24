@@ -39,6 +39,7 @@ export const Home = () => {
             <MainContentCard />
             <MainContentCard />
             <MainContentCard />
+            <MainContentCard />
           </div>
           <div className="col-start-8 col-end-10">
             <Sidebar />
