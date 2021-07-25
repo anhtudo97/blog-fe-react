@@ -31,11 +31,10 @@ function App() {
             path="/"
             component={(props: any) => <Home {...props} />}
           />
-
           <Route path="/register">{user ? <Home /> : <Register />}</Route>
           <Route path="/login">{user ? <Home /> : <Login />}</Route>
-          <Route path="/write">{user ? <Write /> : <Register />}</Route>
-          <Route path="/settings">{user ? <Settings /> : <Register />}</Route>
+          <Route path="/write">{user ? <Write /> : <Login />}</Route>
+          <Route path="/settings">{user ? <Settings /> : <Login />}</Route>
           <Route path="/post/:postId">
             <Single />
           </Route>

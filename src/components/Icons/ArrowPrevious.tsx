@@ -16,7 +16,6 @@ export const ArrowPreviousIcon = (props: SVGProps<SVGSVGElement>) => {
         strokeLinejoin="round"
         strokeWidth="1.333"
         d="M5 1L1 5l4 4"
-        // opacity="0.4"
       ></path>
     </svg>
   );

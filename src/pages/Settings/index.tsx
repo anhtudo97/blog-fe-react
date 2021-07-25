@@ -132,7 +132,7 @@ export const Settings = () => {
           )}
         </SettingsForm>
       </SettingsWrapper>
-      <Sidebar />
+      {/* <Sidebar /> */}
     </SettingsContainer>
   );
 };
