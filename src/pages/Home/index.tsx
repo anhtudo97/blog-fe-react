@@ -21,6 +21,10 @@ export const Home = () => {
     fetchPosts();
   }, [search]);
 
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
   return (
     <Layout>
       <HomeContainer>
@@ -34,18 +38,11 @@ export const Home = () => {
           </div>
         </div>
         <div className="grid grid-cols-9 mt-20">
-          <div className="col-start-1 col-end-7">
-            <MainContentCard />
-            <MainContentCard />
-            <MainContentCard />
-            <MainContentCard />
-            <MainContentCard />
-          </div>
+          <Posts posts={posts} />
           <div className="col-start-8 col-end-10">
             <Sidebar />
           </div>
         </div>
-        <Posts posts={posts} />
       </HomeContainer>
     </Layout>
   );

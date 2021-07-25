@@ -1,17 +1,16 @@
 import React from 'react';
 import { IPost } from '../../types/post';
-import { Post } from '../Post';
-import { PostsContainer } from './styled';
+import { MainContentCard } from '../Card/MainContentCard';
 interface IPostsProps {
   posts: IPost[];
 }
 
 export const Posts: React.FC<IPostsProps> = ({ posts }) => {
   return (
-    <PostsContainer>
+    <div className="col-start-1 col-end-7">
       {posts.map((p: IPost, index: number) => (
-        <Post key={`${p.username}-${index}`} post={p} />
+        <MainContentCard key={`${p.username}-${index}`} post={p} />
       ))}
-    </PostsContainer>
+    </div>
   );
 };

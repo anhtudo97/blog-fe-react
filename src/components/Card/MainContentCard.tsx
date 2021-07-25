@@ -1,11 +1,14 @@
 import React from 'react';
+import { IPost } from 'src/types/post';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { format } from 'date-fns';
 
 const ImageContainer = styled.div`
   ${tw`bg-cover rounded`}
   height: 440px;
-  background-image: url(${(props: { background: string }) => props.background});
+  background-image: url('${(props: { background: string }) =>
+    props.background}');
 `;
 
 const ContentWrapper = styled.div`
@@ -16,27 +19,29 @@ const ContentWrapper = styled.div`
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 `;
 
-export const MainContentCard = () => {
+interface PostProps {
+  post: IPost;
+}
+
+export const MainContentCard: React.FC<PostProps> = ({ post }) => {
+  const { photo, desc, createdAt, title, username } = post;
+  console.log(photo);
+
+  const PF = 'http://localhost:5000/images/';
+
   return (
     <div className="mb-14">
-      <ImageContainer background="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png" />
+      <ImageContainer background={`${PF}${photo}`} />
 
       <ContentWrapper>
         <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded bg-bluebird">
           Vehicle
         </div>
-        <div className="mt-5 text-2xl font-bold text-gray-900">
-          One of Saturn’s largest rings may be newer than anyone
-        </div>
+        <div className="mt-5 text-2xl font-bold text-gray-900">{title}</div>
         <div className="mt-4 text-sm italic text-gray-500">
-          Rickie Baroch - June 6, 2019
+          {username} - {format(new Date(createdAt), 'MMMM dd, yyyy')}
         </div>
-        <div className="mt-3 text-gray-500 text-md">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem sed ut perspiciatis unde
-          omnis iste natus error sit voluptatem accusantium doloremque
-          laudantium, totam rem
-        </div>
+        <div className="mt-3 text-gray-500 text-md">{desc}</div>
       </ContentWrapper>
     </div>
   );
