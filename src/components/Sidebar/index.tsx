@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../../api';
 import { AboutMeCard } from '../Card/AboutMeCard';
 import { PopularCard } from '../Card/PopularCard';
-import { Instagram } from '../Icons/Instagram';
+import { Instagram } from '../Icons/InstagramIcon';
 
 export const Sidebar = () => {
   const [cats, setCats] = useState([]);
@@ -74,8 +74,9 @@ export const Sidebar = () => {
           />
         </div>
         <div className="py-4 mt-3 text-center bg-black rounded">
-        
-          <div className="text-sm font-bold text-white">Subscribe to newsletter</div>
+          <div className="text-sm font-bold text-white">
+            Subscribe to newsletter
+          </div>
         </div>
       </div>
     </>

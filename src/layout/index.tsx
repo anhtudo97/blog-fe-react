@@ -15,7 +15,7 @@ const containerVariants = {
   },
 };
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Transition = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div
       variants={containerVariants}
@@ -28,4 +28,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Layout;
+export default Transition;
