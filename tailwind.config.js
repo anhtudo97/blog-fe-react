@@ -13,6 +13,7 @@ module.exports = {
             colors: {
                 bluebird: '#4A90E2',
                 humanSkin: '#EBEBEB',
+                blackmean: '#373737',
             },
         },
     },
