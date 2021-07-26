@@ -7,7 +7,7 @@ export const Single = () => {
   return (
     <SingleContainer>
       <SinglePost />
-      <Sidebar />
+      {/* <Sidebar /> */}
     </SingleContainer>
   );
 };

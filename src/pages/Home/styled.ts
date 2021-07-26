@@ -5,4 +5,10 @@ const HomeContainer = styled.div`
   ${tw`container mx-auto mt-4`}
 `;
 
-export { HomeContainer };
+const InstagramWrapper = styled.div`
+  ${tw`flex items-center justify-center mr-4 rounded bg-blackmean`};
+  width: 34px;
+  height: 34px;
+`;
+
+export { HomeContainer, InstagramWrapper };

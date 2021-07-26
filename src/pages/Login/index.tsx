@@ -29,6 +29,7 @@ export const Login = () => {
       });
       dispatch(loginSuccess(res.data));
     } catch (err) {
+      console.log(err);
       dispatch(loginFailure());
     }
   };
