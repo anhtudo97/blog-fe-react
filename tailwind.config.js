@@ -15,6 +15,14 @@ module.exports = {
                 humanSkin: '#EBEBEB',
                 blackmean: '#373737',
             },
+            container: {
+                screens: {
+                    sm: '100%',
+                    md: '100%',
+                    lg: '1024px',
+                    '2xl': '1280px',
+                },
+            },
         },
     },
     variants: {

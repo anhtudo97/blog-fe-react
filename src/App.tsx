@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Topbar } from './components/Topbar';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -13,6 +9,7 @@ import { Write } from './pages/Write';
 import { Settings } from './pages/Settings';
 import { Single } from './pages/Single';
 import { AnimatePresence } from 'framer-motion';
+import { Footer } from 'src/components/Footer';
 
 function App() {
   const user = useAppSelector((state) => state.root.user);
@@ -39,6 +36,7 @@ function App() {
             <Single />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </AnimatePresence>
   );
