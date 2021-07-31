@@ -8,8 +8,6 @@ import Transition from 'src/layout';
 import { VerticalCard } from 'src/components/Card/VerticalCard';
 import { HorizontalCard } from 'src/components/Card/HorizontalCard';
 import { PopularCard } from 'src/components/Card/PopularCard';
-import styled from 'styled-components';
-import tw from 'twin.macro';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -22,11 +20,7 @@ export const Home = () => {
     };
     fetchPosts();
   }, [search]);
-
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
-
+  
   return (
     <Transition>
       <HomeContainer>
