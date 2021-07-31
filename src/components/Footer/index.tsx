@@ -87,12 +87,10 @@ export const Footer = () => {
           </div>
           <div className="flex text-sm text-white">
             {menu.map((m: string, index: number) => (
-              <div key={`${m}-${index}`} className="mr-4">Home</div>
+              <div key={`${m}-${index}`} className="mr-4">
+                {m}
+              </div>
             ))}
-            <div className="mr-4">Home</div>
-            <div className="mr-4">Recipes</div>
-            <div className="mr-4">Article</div>
-            <div className="mr-4">Contact</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { IPost } from 'src/types/post';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -24,10 +25,19 @@ interface PostProps {
 }
 
 export const MainContentCard: React.FC<PostProps> = ({ post }) => {
-  const { photo, desc, createdAt, title, username } = post;
-  console.log(photo);
+  const { photo, desc, createdAt, title, username, _id } = post;
+  const history = useHistory();
 
   const PF = 'http://localhost:5000/images/';
+
+  const handlePostDetail = useCallback(() => {
+    history.push({
+      pathname: `/post/${_id}`,
+      state: {
+        id: `${_id}`,
+      },
+    });
+  }, [_id]);
 
   return (
     <div className="mb-14">
@@ -37,7 +47,12 @@ export const MainContentCard: React.FC<PostProps> = ({ post }) => {
         <div className="flex items-center justify-center w-16 h-6 text-sm text-white rounded bg-bluebird">
           Vehicle
         </div>
-        <div className="mt-5 text-2xl font-bold text-gray-900">{title}</div>
+        <div
+          onClick={handlePostDetail}
+          className="mt-5 text-2xl font-bold text-gray-900 cursor-pointer"
+        >
+          {title}
+        </div>
         <div className="mt-4 text-sm italic text-gray-500">
           {username} - {format(new Date(createdAt), 'MMMM dd, yyyy')}
         </div>
