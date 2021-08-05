@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const WriteContainer = styled.div`
+  ${tw`container mx-auto`}
   padding-top: 50px;
 `;
 
 const WriteImg = styled.img`
-  margin-left: 150px;
   width: 70vw;
   height: 250px;
   border-radius: 10px;
@@ -17,9 +18,9 @@ const WriteForm = styled.form`
 `;
 
 const WriteFormGroup = styled.div`
-  margin-left: 150px;
   display: flex;
   align-items: center;
+  width: 100%;
 `;
 
 const WriteIcon = styled.i`
@@ -48,7 +49,6 @@ const WriteInput = styled.input`
 
 const WriteText = styled(WriteInput)`
   font-size: 20px;
-  height: 100vh;
 `;
 
 const WriteSubmit = styled.button`

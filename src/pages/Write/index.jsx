@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   WriteContainer,
   WriteImg,
@@ -54,9 +54,9 @@ export const Write = () => {
             <WriteIcon className="fas fa-plus"></WriteIcon>
           </label>
           <input
+            className="hidden"
             type="file"
             id="fileInput"
-            style={{ display: 'none' }}
             onChange={(e) => setFile(e.target.files[0])}
           />
           <WriteInput

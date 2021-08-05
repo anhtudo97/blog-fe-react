@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { api } from 'src/api';
-import { Sidebar } from '../../components/Sidebar';
-import { SinglePost } from '../../components/SinglePost';
-import { SingleContainer } from './styled';
 import Transition from 'src/layout';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -54,13 +51,6 @@ export const Single = () => {
     </Transition>
   );
 };
-
-// const ImageContainer = styled.div`
-//   ${tw`flex justify-center mt-10 bg-cover rounded`}
-//   height: 500px;
-//   width: 100%;
-//   background-image: url(${(props: { background: string }) => props.background});
-// `;
 
 const ImageContainer = styled.img`
   ${tw`object-cover rounded`}

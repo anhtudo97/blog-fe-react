@@ -30,7 +30,11 @@ function App() {
           />
           <Route path="/register">{user ? <Home /> : <Register />}</Route>
           <Route path="/login">{user ? <Home /> : <Login />}</Route>
-          <Route path="/write">{user ? <Write /> : <Login />}</Route>
+          {/* <Route path="/write">{user ? <Write /> : <Login />}</Route> */}
+          <Route path="/write">
+            {' '}
+            <Write />{' '}
+          </Route>
           <Route path="/settings">{user ? <Settings /> : <Login />}</Route>
           <Route path="/post/:postId">
             <Single />
