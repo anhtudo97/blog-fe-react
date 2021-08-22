@@ -3,20 +3,24 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Topbar } from './components/Topbar';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
-import { useAppSelector } from './app/hooks';
+import { useAppDispatch } from './app/hooks';
 import { Register } from './pages/Register';
 import { Write } from './pages/Write';
 import { Settings } from './pages/Settings';
 import { Single } from './pages/Single';
 import { AnimatePresence } from 'framer-motion';
 import { Footer } from 'src/components/Footer';
+import { useLocalStorage } from 'react-use';
+import { PrivateRoute } from './components/Route/PrivateRoute';
+import { setAuth } from './app/slice';
 
 function App() {
-  const user = useAppSelector((state) => state.root.user);
+  const dispatch = useAppDispatch();
+  const [token] = useLocalStorage('token', '');
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
-  }, [user]);
+    dispatch(setAuth(token));
+  }, [token]);
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -28,17 +32,12 @@ function App() {
             path="/"
             component={(props: any) => <Home {...props} />}
           />
-          <Route path="/register">{user ? <Home /> : <Register />}</Route>
-          <Route path="/login">{user ? <Home /> : <Login />}</Route>
+          <Route path="/login">{<Login />}</Route>
+          <Route path="/register">{<Register />}</Route>
           {/* <Route path="/write">{user ? <Write /> : <Login />}</Route> */}
-          <Route path="/write">
-            {' '}
-            <Write />{' '}
-          </Route>
-          <Route path="/settings">{user ? <Settings /> : <Login />}</Route>
-          <Route path="/post/:postId">
-            <Single />
-          </Route>
+          <PrivateRoute path="/write" component={Write} />
+          <PrivateRoute path="/settings" component={Settings} />
+          <PrivateRoute path="/post/:postId" component={Single} />
         </Switch>
         <Footer />
       </Router>

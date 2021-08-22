@@ -12,12 +12,16 @@ import {
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { api } from '../../api';
 import Layout from 'src/layout';
+import { useLocalStorage } from 'react-use';
+import { useHistory } from 'react-router';
 
 export const Login = () => {
   const userRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
+  const history = useHistory();
   const isFetching = useAppSelector((state) => state.root.isFetching);
+  const [_, setToken] = useLocalStorage('token', '');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +31,19 @@ export const Login = () => {
         username: userRef.current?.value,
         password: passwordRef.current?.value,
       });
-      dispatch(loginSuccess(res.data));
+      console.log(res);
+      dispatch(
+        loginSuccess({
+          token: res.data.accessToken,
+          user: res.data,
+        }),
+      );
+
+      // save to localStorage
+      setToken(res.data.accessToken);
+
+      // redirect to home page
+      history.push('/');
     } catch (err) {
       console.log(err);
       dispatch(loginFailure());

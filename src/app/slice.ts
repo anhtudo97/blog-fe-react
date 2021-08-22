@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IGlobalState } from '../types';
 
 const initialState: IGlobalState = {
+  auth: false,
+  token: '',
   user: null,
   isFetching: false,
   error: false,
@@ -12,16 +14,21 @@ const GlobalSlice = createSlice({
   initialState,
   reducers: {
     loginStart: (state) => {
+      state.auth = false;
+      state.token = '';
       state.user = null;
       state.isFetching = true;
       state.error = false;
     },
     loginSuccess: (state, action) => {
-      state.user = action.payload;
+      state.auth = true;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
       state.isFetching = false;
       state.error = false;
     },
     loginFailure: (state) => {
+      state.auth = false;
       state.user = null;
       state.isFetching = false;
       state.error = true;
@@ -40,9 +47,14 @@ const GlobalSlice = createSlice({
       state.error = true;
     },
     logout: (state) => {
+      state.auth = false;
       state.user = null;
       state.isFetching = false;
       state.error = false;
+    },
+    setAuth: (state, action) => {
+      state.auth = action.payload !== '';
+      state.token = action.payload;
     },
   },
 });
@@ -55,5 +67,6 @@ export const {
   updateSuccess,
   updateFailure,
   logout,
+  setAuth,
 } = GlobalSlice.actions;
 export default GlobalSlice.reducer;
