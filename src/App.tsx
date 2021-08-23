@@ -34,7 +34,6 @@ function App() {
           />
           <Route path="/login">{<Login />}</Route>
           <Route path="/register">{<Register />}</Route>
-          {/* <Route path="/write">{user ? <Write /> : <Login />}</Route> */}
           <PrivateRoute path="/write" component={Write} />
           <PrivateRoute path="/settings" component={Settings} />
           <PrivateRoute path="/post/:postId" component={Single} />
