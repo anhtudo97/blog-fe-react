@@ -21,7 +21,8 @@ export const Login = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const isFetching = useAppSelector((state) => state.root.isFetching);
-  const [_, setToken] = useLocalStorage('token', '');
+  const [, setToken] = useLocalStorage('token', '');
+  const [, setUser] = useLocalStorage('user', '');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,7 +32,7 @@ export const Login = () => {
         username: userRef.current?.value,
         password: passwordRef.current?.value,
       });
-      console.log(res);
+
       dispatch(
         loginSuccess({
           token: res.data.accessToken,
@@ -41,6 +42,7 @@ export const Login = () => {
 
       // save to localStorage
       setToken(res.data.accessToken);
+      setUser(res.data.user);
 
       // redirect to home page
       history.push('/');

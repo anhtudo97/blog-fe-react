@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Top,
@@ -12,16 +12,28 @@ import {
 } from './styled';
 import { logout } from '../../app/slice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useLocalStorage } from 'react-use';
+import get from 'lodash/get';
 
 export const Topbar = () => {
   const dispatch = useAppDispatch();
+  const [token] = useLocalStorage('token', '');
   const user = useAppSelector((state) => state.root.user);
+  const [toggle, setToggle] = useState(false);
 
   const PF = 'http://localhost:5000/images/';
 
   const handleLogout = useCallback(() => {
     dispatch(logout());
   }, []);
+
+  useEffect(() => {
+    setToggle(token !== '' ? true : false);
+  }, [user]);
+
+  const image = useMemo(() => {
+    return PF + get(user, 'profilePic', '');
+  }, [user]);
 
   return (
     <Top>
@@ -57,13 +69,9 @@ export const Topbar = () => {
         </TopList>
       </TopCenter>
       <TopSide>
-        {user ? (
+        {toggle ? (
           <Link to="/settings">
-            <TopImg
-              className="topImg"
-              src={PF + user.profilePic}
-              alt="Profile picture"
-            />
+            <TopImg className="topImg" src={image} alt="Profile picture" />
           </Link>
         ) : (
           <TopList>

@@ -3,6 +3,7 @@ import { Route, Redirect, RouteComponentProps } from 'react-router-dom';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import get from 'lodash/get';
 import { useAppSelector } from 'src/app/hooks';
+import { useLocalStorage } from 'react-use';
 interface IProps {
   exact?: boolean;
   path: string;
@@ -13,9 +14,9 @@ export const PrivateRoute = ({ component: Component, ...rest }: IProps) => {
   const auth = useAppSelector((state) => state.root.auth);
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-
+  const [token] = useLocalStorage('token', '');
+  
   useEffect(() => {
-    const token = localStorage.getItem('toobiauth');
     if (token) {
       const tokenExpiration = get(jwtDecode<JwtPayload>(token), 'exp', 0);
       const dateNow = new Date();
